@@ -1,6 +1,7 @@
 package br.com.alura.desafio_fipe.principal;
 
 import br.com.alura.desafio_fipe.model.Dados;
+import br.com.alura.desafio_fipe.model.Modelos;
 import br.com.alura.desafio_fipe.service.ConsumoApi;
 import br.com.alura.desafio_fipe.service.ConverteDados;
 
@@ -41,5 +42,13 @@ public class Principal {
                 .forEach(System.out::println);
         System.out.println("Informe o código da marca para consulta: ");
         var codigoMarca = leitura.nextLine();
+
+        endereco = endereco + "/" + codigoMarca + "/modelos";
+        json = consumo.obterDados(endereco);
+        var modeloLista = conversor.obterDados(json, Modelos.class);
+        System.out.println("\nModelos dessa marca");
+        modeloLista.modelos().stream()
+                .sorted(Comparator.comparing(Dados::codigo))
+                .forEach(System.out::println);
     }
 }
