@@ -1,7 +1,5 @@
 package br.com.alura.desafio_fipe.service;
 
-import jdk.dynalink.linker.LinkerServices;
-
 import java.util.List;
 
 public interface IConverteDados {
